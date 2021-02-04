@@ -1,0 +1,38 @@
+<aura:component controller ="StarWarsController">
+    <aura:attribute name="swId" type="Integer"/>
+    <aura:attribute name="swRes" type="StarWarsApiResponse"/>
+    <aura:attribute name="swChar" type="Star_Wars_character__c"/>
+<!-- PAGE HEADER -->
+<lightning:layout class="slds-page-header slds-page-header_object-home">
+    <lightning:layoutItem>
+        <lightning:icon iconName="standard:scan_card" alternativeText="Starwars Charcters"/>
+    </lightning:layoutItem>
+    <lightning:layoutItem padding="horizontal-small">
+        <div class="page-section page-header">
+            <h1 class="slds-text-heading_label">Star wars Characters</h1>
+        </div>
+    </lightning:layoutItem>
+</lightning:layout>
+<!-- / PAGE HEADER -->
+    <div aria-labelledby="newexpenseform">
+    <!-- BOXED AREA -->
+        <fieldset class="slds-box slds-theme_default slds-container_small">
+            <legend id="newexpenseform" class="slds-text-heading_small
+            slds-p-vertical_medium">
+            Add Charcter
+            </legend>
+        <!-- Get character from api  -->
+            <form class="slds-form_stacked">
+                <lightning:input  label="Please enter number: "
+                name="swId"
+                type="Number"
+                value="{!v.swId}"
+                required="true"/>
+                <lightning:button label="Create Record"
+                              class="slds-button_brand"
+                              variant="brand"
+                              onclick="{!c.clickCreate}"/>
+            </form>
+        </fieldset>
+    </div>
+</aura:component>
