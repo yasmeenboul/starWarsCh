@@ -1,8 +1,5 @@
 public with sharing class StarWarsController {
    
-    public StarWarsController() {
-
-    }
     @AuraEnabled
     public static StarWarsApiResponse setSwId(Integer swId){
         StarWarsApiResponse swRes = new StarWarsApiResponse();
@@ -18,7 +15,6 @@ public with sharing class StarWarsController {
     }
     @AuraEnabled
     public static Star_Wars_character__c saveRecord(StarWarsApiResponse swRes){
-        System.debug('swRes='+swRes);
         try {
        Star_Wars_character__c swChar = new Star_Wars_character__c();
        swChar.Name = swRes.name;
@@ -28,9 +24,10 @@ public with sharing class StarWarsController {
        swchar.Skin_color__c = swRes.skin_color;
        swChar.Films__c = swRes.films[0];
        swChar.Birth_year__c = swRes.birth_year;
-            System.debug('swChar='+swChar);
+       
        insert swChar;
-        return swChar;    
+            
+       return swChar;    
         } catch (DmlException e) {
             System.debug(e.getMessage());
            return null;
